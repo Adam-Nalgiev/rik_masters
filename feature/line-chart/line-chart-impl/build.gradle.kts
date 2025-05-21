@@ -49,4 +49,5 @@ dependencies {
     implementation(libs.androidx.material3)
 
     testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
 }

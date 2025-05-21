@@ -4,14 +4,12 @@ import android.content.Context
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.lifecycle.ViewModel
-import ru.rikmasters.line_chart_api.domain.GetStatisticUseCase
-import ru.rikmasters.line_chart_api.presentation.LineChartViewModel
 import ru.rikmasters.line_chart_impl.R
 import kotlin.math.roundToInt
 
 class LineChartViewModel(
-    override val getStatisticUseCase: GetStatisticUseCase
-) : ViewModel(), LineChartViewModel {
+    // override val getStatisticUseCase: GetStatisticUseCase
+) : ViewModel() {
     // Холпер для определения ближайшей точки по X
     fun nearestPointIndex(tap: Offset, count: Int, canvasSize: Size): Int {
         val step = canvasSize.width / (count - 1)
@@ -34,5 +32,19 @@ class LineChartViewModel(
         val day = date.substring(startIndex = 0, endIndex = date.lastIndex - 5)
 
         return "$day $monthWord"
+    }
+
+    fun dateFormatter(date: String): String {
+        //первые два числа переменчивы в разрядности, поэтому отсчет с конца
+        val monthNum =
+            date.substring(startIndex = date.lastIndex - 5, endIndex = date.lastIndex - 3)
+
+        var day = date.substring(startIndex = 0, endIndex = date.lastIndex - 5)
+
+        if (day.length < 2) {
+            day = "0$day"
+        }
+
+        return "$day.$monthNum"
     }
 }

@@ -38,6 +38,7 @@ import ru.rikmasters.line_chart_impl.presentation.view.theme.Typography
 import ru.rikmasters.line_chart_impl.presentation.view.theme.White
 import ru.rikmasters.line_chart_impl.presentation.viewmodel.LineChartViewModel
 
+/** Обязательно задать размеры при объявлении*/
 @Composable
 fun LineChart(
     modifier: Modifier = Modifier,
@@ -68,7 +69,7 @@ fun LineChart(
             val coordinatesFieldHeight = size.height - paddingBetweenValuesAndField
             val minFieldMaxValue = 40f
             val xStepSize = size.width / data.size
-            val xValues = data.map { it.first }
+            val xValues = data.map { viewModel.dateFormatter(it.first) }
                 .map { textMeasurer.measure(it, style = Footnote11Type) }
             val yValues = data.map { it.second.toFloat() }
             val baseStartPadding = 36f

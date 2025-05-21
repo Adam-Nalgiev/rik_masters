@@ -41,6 +41,10 @@ android {
 
 dependencies {
 
+    implementation(project(":feature:line-chart:line-chart-api"))
+    implementation(project(":feature:line-chart:line-chart-impl"))
+    implementation(project(":core:network-client:network-client-api"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
