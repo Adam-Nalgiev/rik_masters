@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "ru.rikmasters.network_client_impl"
+    namespace = "ru.rikmasters.line_chart_impl"
     compileSdk = 35
 
     defaultConfig {
@@ -30,9 +31,22 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
+
+    implementation(project(":feature:line-chart:line-chart-api"))
     implementation(project(":core:network-client:network-client-api"))
+
+    implementation(libs.androidx.lifecycle.compose)
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.material3)
+
     testImplementation(libs.junit)
 }

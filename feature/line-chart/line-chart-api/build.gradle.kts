@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.rikmasters.network_client_impl"
+    namespace = "ru.rikmasters.line_chart_api"
     compileSdk = 35
 
     defaultConfig {
@@ -31,8 +31,8 @@ android {
         jvmTarget = "11"
     }
 }
-
 dependencies {
     implementation(project(":core:network-client:network-client-api"))
+
     testImplementation(libs.junit)
 }
