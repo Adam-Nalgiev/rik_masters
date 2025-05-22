@@ -4,15 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import ru.rikmasters.network_client_impl.client.NetworkClient
+import androidx.compose.ui.unit.dp
+import ru.rikmasters.line_chart_impl.presentation.view.ViewsChart
 import ru.rikmasters.stats.ui.theme.RikstatsTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,32 +20,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RikstatsTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LaunchedEffect(Unit) {
-                        NetworkClient.getStatistic()
-                    }
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                Box(Modifier.fillMaxSize()) {
+                    ViewsChart(
+                        Modifier
+                            .fillMaxWidth()
+                            .height(300.dp)
+                            .align(Alignment.Center)
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    RikstatsTheme {
-        Greeting("Android")
     }
 }

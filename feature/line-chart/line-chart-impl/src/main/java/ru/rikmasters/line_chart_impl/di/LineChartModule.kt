@@ -9,5 +9,5 @@ import ru.rikmasters.line_chart_impl.presentation.viewmodel.LineChartViewModelIm
 val lineChartModule = module {
     single { LineChartRepository(get()) }
     factory { GetStatisticUseCase(get()) }
-    viewModel { LineChartViewModelImpl() }
+    viewModel { LineChartViewModelImpl(get()) }
 }

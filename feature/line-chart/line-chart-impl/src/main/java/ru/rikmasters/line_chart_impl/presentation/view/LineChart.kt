@@ -1,5 +1,6 @@
 package ru.rikmasters.line_chart_impl.presentation.view
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -7,11 +8,15 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -27,7 +32,7 @@ import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
-import androidx.lifecycle.viewmodel.compose.viewModel
+import org.koin.androidx.compose.koinViewModel
 import ru.rikmasters.line_chart_impl.presentation.view.theme.Footnote11Type
 import ru.rikmasters.line_chart_impl.presentation.view.theme.Footnote13Type
 import ru.rikmasters.line_chart_impl.presentation.view.theme.Gray
@@ -38,25 +43,57 @@ import ru.rikmasters.line_chart_impl.presentation.view.theme.Typography
 import ru.rikmasters.line_chart_impl.presentation.view.theme.White
 import ru.rikmasters.line_chart_impl.presentation.viewmodel.LineChartViewModelImpl
 
-/** Обязательно задать размеры при объявлении*/
+/** Обязательно задать размеры при объявлении.
+ * Обертка, чтобы сохранить инкапсуляцию используемых классов внутри моудля.*/
 @Composable
-fun LineChart(
+fun ViewsChart(modifier: Modifier = Modifier) {
+    ViewsLineChart(modifier)
+}
+
+@Composable
+internal fun ViewsLineChart(
     modifier: Modifier = Modifier,
-    data: List<Pair<String, Int>>,
-    viewModel: LineChartViewModelImpl = viewModel()
+    viewModel: LineChartViewModelImpl = koinViewModel()
+) {
+    Box(
+        modifier
+            .fillMaxSize()
+            .background(White, RoundedCornerShape(16.dp))
+    ) {
+        val state = viewModel.dataFlow.collectAsState()
+
+        AnimatedVisibility(
+            visible = state.value.isEmpty(),
+            modifier = Modifier.align(Alignment.Center)
+        ) {
+            CircularProgressIndicator(
+                color = Red
+            )
+        }
+
+        LineChart(
+            modifier = modifier,
+            viewModel = viewModel,
+            dataState = state
+        )
+    }
+}
+
+@Composable
+internal fun LineChart(
+    modifier: Modifier = Modifier,
+    viewModel: LineChartViewModelImpl,
+    dataState: State<List<Pair<String, Int>>>
 ) {
     val context = LocalContext.current
     val textMeasurer = rememberTextMeasurer()
     var selectedPoint by remember { mutableStateOf<Int?>(null) }
+    val data = dataState.value
 
-    Box(
-        modifier
-            .background(White, RoundedCornerShape(16.dp))
-    ) {
         Canvas(
-            Modifier
+            modifier
                 .fillMaxSize()
-                .padding(32.dp)
+                .padding(16.dp)
                 .pointerInput(data) {
                     detectTapGestures { tap ->
                         // находим ближайший по X индекс
@@ -214,5 +251,4 @@ fun LineChart(
                 )
             }
         }
-    }
 }
