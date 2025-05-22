@@ -1,5 +1,5 @@
 package ru.rikmasters.line_chart_api.entity
 
-import ru.rikmasters.network_client_api.entity.Statistic
+import ru.rikmasters.network_client_api.entity.StatisticsResponse
 
-interface Statistics : Statistic
+interface Statistics : StatisticsResponse

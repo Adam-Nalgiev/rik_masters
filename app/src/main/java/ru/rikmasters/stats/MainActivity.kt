@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import ru.rikmasters.network_client_impl.client.NetworkClient
 import ru.rikmasters.stats.ui.theme.RikstatsTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,6 +22,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             RikstatsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    LaunchedEffect(Unit) {
+                        NetworkClient.getStatistic()
+                    }
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)

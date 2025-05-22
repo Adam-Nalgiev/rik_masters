@@ -1,11 +1,11 @@
 package ru.rikmasters.network_client_api
 
-import ru.rikmasters.network_client_api.entity.Statistic
-import ru.rikmasters.network_client_api.entity.Users
+import ru.rikmasters.network_client_api.entity.StatisticsResponse
+import ru.rikmasters.network_client_api.entity.UsersResponse
 
 interface NetworkClientApi {
 
-    suspend fun getStatistic(): Statistic
+    suspend fun getStatistic(): StatisticsResponse
 
-    suspend fun getUsers(): Users
+    suspend fun getUsers(): UsersResponse
 }

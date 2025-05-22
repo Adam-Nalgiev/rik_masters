@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
@@ -34,6 +35,8 @@ android {
 
 dependencies {
     implementation(project(":core:network-client:network-client-api"))
+
+    implementation(libs.bundles.ktor)
 
     implementation(libs.bundles.koin)
 
