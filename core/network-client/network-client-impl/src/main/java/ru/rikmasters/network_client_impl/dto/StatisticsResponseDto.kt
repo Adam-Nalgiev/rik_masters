@@ -5,5 +5,5 @@ import ru.rikmasters.network_client_api.entity.StatisticsResponse
 
 @Serializable
 data class StatisticsResponseDto(
-    override val statistics: List<UserDto>
+    override val statistics: List<UserStatsDto>
 ) : StatisticsResponse

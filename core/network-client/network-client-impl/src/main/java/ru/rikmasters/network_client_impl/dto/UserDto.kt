@@ -1,11 +1,12 @@
 package ru.rikmasters.network_client_impl.dto
 
-import kotlinx.serialization.Serializable
 import ru.rikmasters.network_client_api.entity.User
 
-@Serializable
 data class UserDto(
-    override val user_id: Int,
-    override val type: String,
-    override val dates: List<String>
+    override val id: Int,
+    override val sex: String,
+    override val username: String,
+    override val isOnline: Boolean,
+    override val age: Int,
+    override val files: List<ImageDto>
 ) : User
