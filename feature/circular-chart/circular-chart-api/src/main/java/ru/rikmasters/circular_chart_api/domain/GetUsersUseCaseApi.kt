@@ -1,9 +1,10 @@
 package ru.rikmasters.circular_chart_api.domain
 
 import ru.rikmasters.circular_chart_api.data.CircularChartRepositoryApi
+import ru.rikmasters.network_client_api.entity.UsersResponse
 
-interface GetStatisticUseCaseApi {
+interface GetUsersUseCaseApi {
     val repository: CircularChartRepositoryApi
 
-    fun execute()
+    suspend fun execute(): UsersResponse
 }

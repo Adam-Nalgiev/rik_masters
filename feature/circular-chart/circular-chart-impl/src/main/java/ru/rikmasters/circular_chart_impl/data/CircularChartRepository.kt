@@ -1,13 +1,14 @@
 package ru.rikmasters.circular_chart_impl.data
 
 import ru.rikmasters.circular_chart_api.data.CircularChartRepositoryApi
-import ru.rikmasters.network_client_impl.client.NetworkClient
+import ru.rikmasters.network_client_api.NetworkClientApi
+import ru.rikmasters.network_client_api.entity.UsersResponse
 
 class CircularChartRepository(
-    override val client: NetworkClient
+    override val client: NetworkClientApi
 ) : CircularChartRepositoryApi {
 
-    override fun getStatistic() {
-        TODO("Not yet implemented")
+    override suspend fun getUsers(): UsersResponse {
+        return client.getUsers()
     }
 }

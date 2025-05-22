@@ -38,7 +38,6 @@ android {
 
 dependencies {
     implementation(project(":core:network-client:network-client-api"))
-    implementation(project(":core:network-client:network-client-impl"))
     implementation(project(":feature:circular-chart:circular-chart-api"))
 
     implementation(libs.bundles.koin)

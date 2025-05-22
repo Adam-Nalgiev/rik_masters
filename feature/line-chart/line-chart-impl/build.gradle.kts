@@ -40,7 +40,6 @@ dependencies {
 
     implementation(project(":feature:line-chart:line-chart-api"))
     implementation(project(":core:network-client:network-client-api"))
-    implementation(project(":core:network-client:network-client-impl"))
 
     implementation(libs.bundles.koin)
 
