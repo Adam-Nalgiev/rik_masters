@@ -5,6 +5,7 @@ import ru.rikmasters.network_client_api.entity.Statistic
 import ru.rikmasters.network_client_api.entity.Users
 
 object NetworkClient : NetworkClientApi {
+
     override suspend fun getStatistic(): Statistic {
         TODO("Not yet implemented")
     }

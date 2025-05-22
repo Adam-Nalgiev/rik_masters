@@ -41,6 +41,8 @@ dependencies {
     implementation(project(":feature:line-chart:line-chart-api"))
     implementation(project(":core:network-client:network-client-api"))
 
+    implementation(libs.bundles.koin)
+
     implementation(libs.androidx.lifecycle.compose)
 
     implementation(libs.androidx.core.ktx)

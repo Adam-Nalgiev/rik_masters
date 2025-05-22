@@ -36,14 +36,14 @@ import ru.rikmasters.line_chart_impl.presentation.view.theme.LightGray
 import ru.rikmasters.line_chart_impl.presentation.view.theme.Red
 import ru.rikmasters.line_chart_impl.presentation.view.theme.Typography
 import ru.rikmasters.line_chart_impl.presentation.view.theme.White
-import ru.rikmasters.line_chart_impl.presentation.viewmodel.LineChartViewModel
+import ru.rikmasters.line_chart_impl.presentation.viewmodel.LineChartViewModelImpl
 
 /** Обязательно задать размеры при объявлении*/
 @Composable
 fun LineChart(
     modifier: Modifier = Modifier,
     data: List<Pair<String, Int>>,
-    viewModel: LineChartViewModel = viewModel()
+    viewModel: LineChartViewModelImpl = viewModel()
 ) {
     val context = LocalContext.current
     val textMeasurer = rememberTextMeasurer()

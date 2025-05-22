@@ -9,8 +9,17 @@ activityCompose = "1.10.1"
 composeBom = "2025.05.01"
 appcompat = "1.7.0"
 lifecycle = "2.9.0"
+koin = "3.5.3"
+
+[bundles]
+koin = ["koin-core", "koin-android", "koin-androidx-compose"]
 
 [libraries]
+#Koin
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

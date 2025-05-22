@@ -34,5 +34,8 @@ android {
 
 dependencies {
     implementation(project(":core:network-client:network-client-api"))
+
+    implementation(libs.bundles.koin)
+
     testImplementation(libs.junit)
 }

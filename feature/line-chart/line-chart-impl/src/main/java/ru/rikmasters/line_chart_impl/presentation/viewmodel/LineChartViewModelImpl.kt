@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import ru.rikmasters.line_chart_impl.R
 import kotlin.math.roundToInt
 
-class LineChartViewModel(
+class LineChartViewModelImpl(
     // override val getStatisticUseCase: GetStatisticUseCase
 ) : ViewModel() {
     // Холпер для определения ближайшей точки по X
