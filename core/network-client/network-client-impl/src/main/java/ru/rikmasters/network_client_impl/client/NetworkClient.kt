@@ -8,12 +8,14 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.get
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.InternalSerializationApi
 import ru.rikmasters.network_client_api.NetworkClientApi
 import ru.rikmasters.network_client_api.entity.StatisticsResponse
 import ru.rikmasters.network_client_api.entity.UsersResponse
 import ru.rikmasters.network_client_impl.dto.StatisticsResponseDto
 import ru.rikmasters.network_client_impl.dto.UsersResponseDto
 
+@OptIn(InternalSerializationApi::class)
 object NetworkClient : NetworkClientApi {
     private val client = HttpClient(CIO) {
         install(Logging)
