@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="visitor">
+        <item quantity="one">%d посетитель</item>
+        <item quantity="few">%d посетителя</item>
+        <item quantity="many">%d посетителей</item>
+        <item quantity="other">%d посетитель</item>
+    </plurals>
+
+    <string-array name="months">
+        <item>января</item>
+        <item>февраля</item>
+        <item>марта</item>
+        <item>апреля</item>
+        <item>мая</item>
+        <item>июня</item>
+        <item>июля</item>
+        <item>августа</item>
+        <item>сентября</item>
+        <item>октября</item>
+        <item>ноября</item>
+        <item>декабря</item>
+    </string-array>
+</resources>
