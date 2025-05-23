@@ -1,5 +1,6 @@
 package ru.rikmasters.circular_chart_impl.presentation.view
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -72,6 +74,15 @@ private fun CircularChart(
                 .padding(top = 32.dp)
                 .size(size)
         )
+
+        AnimatedVisibility(
+            visible = genderAgeStatistic.value.isEmpty(),
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        ) {
+            CircularProgressIndicator(
+                color = Red
+            )
+        }
 
         //легенда
         Row(
