@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "ru.rikmasters.line_chart_impl"
+    namespace = "ru.rikmasters.circular_chart_api"
     compileSdk = 35
 
     defaultConfig {
@@ -31,25 +30,12 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
 
-    implementation(project(":feature:line-chart:line-chart-api"))
     implementation(project(":core:network-client:network-client-api"))
 
-    implementation(libs.bundles.koin)
-
-    implementation(libs.androidx.lifecycle.compose)
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.material3)
-
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.androidx.junit)
 }

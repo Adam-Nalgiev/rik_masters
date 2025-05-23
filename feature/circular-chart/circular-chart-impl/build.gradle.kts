@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.rikmasters.line_chart_impl"
+    namespace = "ru.rikmasters.circular_chart_impl"
     compileSdk = 35
 
     defaultConfig {
@@ -37,9 +37,8 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":feature:line-chart:line-chart-api"))
     implementation(project(":core:network-client:network-client-api"))
+    implementation(project(":feature:circular-chart:circular-chart-api"))
 
     implementation(libs.bundles.koin)
 
@@ -51,5 +50,5 @@ dependencies {
     implementation(libs.androidx.material3)
 
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.androidx.junit)
 }

@@ -9,15 +9,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.rikmasters.line_chart_api.presentation.LineChartViewModel
+import ru.rikmasters.line_chart_api.domain.GetStatisticUseCaseApi
+import ru.rikmasters.line_chart_api.presentation.LineChartViewModelApi
 import ru.rikmasters.line_chart_impl.R
-import ru.rikmasters.line_chart_impl.domain.GetStatisticUseCase
 import ru.rikmasters.network_client_api.entity.StatisticsResponse
 import kotlin.math.roundToInt
 
 internal class LineChartViewModelImpl(
-    override val getStatisticUseCase: GetStatisticUseCase
-) : ViewModel(), LineChartViewModel {
+    override val getStatisticUseCase: GetStatisticUseCaseApi
+) : ViewModel(), LineChartViewModelApi {
 
     private var _dataFlow = MutableStateFlow<List<Pair<String, Int>>>(emptyList())
     val dataFlow = _dataFlow.asStateFlow()
