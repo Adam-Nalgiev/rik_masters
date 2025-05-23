@@ -117,6 +117,7 @@ private fun Circle(
 ) {
     val malePercent = genderPercentage.first
     val femalePercent = 1f - malePercent
+
     Box(
         modifier
     ) {
@@ -207,7 +208,6 @@ private fun DescriptionRow(
     ageCategory: String,
     genderPercentage: Pair<Float, Float>//первое значени - мужчины, второе - женщины
 ) {
-
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
