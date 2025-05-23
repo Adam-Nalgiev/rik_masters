@@ -47,6 +47,8 @@ dependencies {
     implementation(project(":core:network-client:network-client-impl"))
     implementation(project(":feature:circular-chart:circular-chart-api"))
     implementation(project(":feature:circular-chart:circular-chart-impl"))
+    implementation(project(":feature:viewers-list:viewers-list-api"))
+    implementation(project(":feature:viewers-list:viewers-list-impl"))
 
     implementation(libs.koin.core)
     implementation(libs.koin.android)
