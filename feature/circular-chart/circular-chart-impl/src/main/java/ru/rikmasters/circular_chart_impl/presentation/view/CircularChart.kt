@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -44,7 +45,6 @@ fun GenderCircularChart(
     size: Dp = 100.dp
 ) {
     CircularChart(
-        genderPercentage = Pair(0.4f, 0.6f),
         modifier = modifier,
         size = size
     )
@@ -54,11 +54,10 @@ fun GenderCircularChart(
 private fun CircularChart(
     modifier: Modifier = Modifier,
     viewModel: CircularChartViewModel = koinViewModel(),
-    genderPercentage: Pair<Float, Float>, //первое значение Мужчины, второе Женщины
     size: Dp
 ) {
-    val malePercent = genderPercentage.first
-    val femalePercent = genderPercentage.second
+    val genderAgeStatistic = viewModel.data.collectAsState()
+    val genderPercentage = viewModel.totalMaleFemalePercentage.collectAsState()
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -68,7 +67,7 @@ private fun CircularChart(
     ) {
         //Круг
         Circle(
-            genderPercentage = genderPercentage,
+            genderPercentage = genderPercentage.value,
             modifier = Modifier
                 .padding(top = 32.dp)
                 .size(size)
@@ -82,28 +81,31 @@ private fun CircularChart(
                 .fillMaxWidth()
                 .padding(32.dp)
         ) {
-            LegendItem(color = Red, label = stringResource(R.string.male), percent = malePercent)
+            LegendItem(
+                color = Red,
+                label = stringResource(R.string.male),
+                percent = genderPercentage.value.first
+            )
             LegendItem(
                 color = Orange,
                 label = stringResource(R.string.female),
-                percent = femalePercent
+                percent = genderPercentage.value.second
             )
         }
 
         HorizontalDivider(thickness = 1.dp, color = Light, modifier = Modifier.fillMaxWidth())
 
-        StatisticDescription(genderPercentage = genderPercentage)
+        StatisticDescription(genderPercentage = genderAgeStatistic.value)
     }
 }
 
 @Composable
 private fun Circle(
     modifier: Modifier = Modifier,
-    genderPercentage: Pair<Float, Float>
+    genderPercentage: Pair<Float, Float> //первое значени - мужчины, второе - женщины
 ) {
     val malePercent = genderPercentage.first
-    val femalePercent = genderPercentage.second
-
+    val femalePercent = 1f - malePercent
     Box(
         modifier
     ) {
@@ -174,25 +176,15 @@ private fun LegendItem(
 @Composable
 private fun StatisticDescription(
     modifier: Modifier = Modifier,
-    genderPercentage: Pair<Float, Float>
+    genderPercentage: Map<String, Pair<Float, Float>>
 ) {
     Column(
         modifier = modifier.padding(bottom = 16.dp)
     ) {
-        repeat(7) { id ->
-            val ageCategory = when (id) {
-                0 -> "18-21"
-                1 -> "22-25"
-                2 -> "26-30"
-                3 -> "31-35"
-                4 -> "36-40"
-                5 -> "40-50"
-                else -> ">50"
-            }
-
+        for (statsRow in genderPercentage) {
             DescriptionRow(
-                ageCategory = ageCategory,
-                genderPercentage = genderPercentage
+                ageCategory = statsRow.key,
+                genderPercentage = statsRow.value
             )
         }
     }
@@ -202,10 +194,8 @@ private fun StatisticDescription(
 private fun DescriptionRow(
     modifier: Modifier = Modifier,
     ageCategory: String,
-    genderPercentage: Pair<Float, Float>
+    genderPercentage: Pair<Float, Float>//первое значени - мужчины, второе - женщины
 ) {
-    val malePercent = genderPercentage.first
-    val femalePercent = genderPercentage.second
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -221,8 +211,8 @@ private fun DescriptionRow(
         )
 
         Column {
-            LinearStatisticLine(color = Red, percent = malePercent)
-            LinearStatisticLine(color = Orange, percent = femalePercent)
+            LinearStatisticLine(color = Red, percent = genderPercentage.first)
+            LinearStatisticLine(color = Orange, percent = genderPercentage.second)
         }
     }
 }
