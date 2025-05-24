@@ -11,6 +11,7 @@ import ru.rikmasters.circular_chart_api.domain.GetUsersUseCaseApi
 import ru.rikmasters.circular_chart_api.presentation.CircularChartViewModelApi
 import ru.rikmasters.network_client_api.entity.User
 import ru.rikmasters.network_client_api.entity.UsersResponse
+import kotlin.math.roundToInt
 
 internal class CircularChartViewModel(
     override val getUsersUseCaseApi: GetUsersUseCaseApi
@@ -63,6 +64,9 @@ internal class CircularChartViewModel(
         usersInAgeCategories.forEach { ageCategory, usersInCategory ->
             var males = usersInCategory.filter { it.sex == "M" }.size
             var females = usersInCategory.filter { it.sex == "W" }.size
+
+            Log.d("MALES", males.toString())
+            Log.d("FEMALES", females.toString())
             preparedData[ageCategory] =
                 Pair(
                     first = convertToPercent(males.toFloat(), totalCount.toFloat()), // мужчин
@@ -102,6 +106,6 @@ internal class CircularChartViewModel(
     }
 
     private fun Float.roundToTwoDecimals(): Float {
-        return "%.2f".format(this).toFloatOrNull() ?: 0f
+        return (this * 100f).roundToInt() / 100f
     }
 }
