@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="visitor">
+        <item quantity="one">%d visitor</item>
+        <item quantity="few">%d visitors</item>
+        <item quantity="many">%d visitors</item>
+        <item quantity="other">%d visitors</item>
+    </plurals>
+
+    <string-array name="months">
+        <item>january</item>
+        <item>february</item>
+        <item>march</item>
+        <item>april</item>
+        <item>may</item>
+        <item>june</item>
+        <item>july</item>
+        <item>august</item>
+        <item>september</item>
+        <item>october</item>
+        <item>november</item>
+        <item>december</item>
+    </string-array>
+</resources>
