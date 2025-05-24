@@ -1,6 +1,5 @@
 package ru.rikmasters.circular_chart_impl.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
@@ -64,9 +63,6 @@ internal class CircularChartViewModel(
         usersInAgeCategories.forEach { ageCategory, usersInCategory ->
             var males = usersInCategory.filter { it.sex == "M" }.size
             var females = usersInCategory.filter { it.sex == "W" }.size
-
-            Log.d("MALES", males.toString())
-            Log.d("FEMALES", females.toString())
             preparedData[ageCategory] =
                 Pair(
                     first = convertToPercent(males.toFloat(), totalCount.toFloat()), // мужчин
@@ -89,7 +85,6 @@ internal class CircularChartViewModel(
 
     private fun convertToPercent(int: Float, maxValue: Float): Float {
         val percent = (int / maxValue)
-        Log.d("PERCENT", percent.toString())
         return percent.roundToTwoDecimals()
     }
 
