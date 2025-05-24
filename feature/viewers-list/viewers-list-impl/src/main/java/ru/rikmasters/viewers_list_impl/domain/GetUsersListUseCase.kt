@@ -2,11 +2,11 @@ package ru.rikmasters.viewers_list_impl.domain
 
 import ru.rikmasters.network_client_api.entity.UsersResponse
 import ru.rikmasters.viewers_list_api.data.ViewersListRepositoryApi
-import ru.rikmasters.viewers_list_api.domain.GetViewersListUseCaseApi
+import ru.rikmasters.viewers_list_api.domain.GetUsersListUseCaseApi
 
-class GetViewersListUseCase(
+class GetUsersListUseCase(
     override val repository: ViewersListRepositoryApi
-) : GetViewersListUseCaseApi {
+) : GetUsersListUseCaseApi {
     override suspend fun execute(): UsersResponse {
         return repository.getUsers()
     }

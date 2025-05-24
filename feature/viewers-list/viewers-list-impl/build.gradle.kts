@@ -41,6 +41,8 @@ dependencies {
     implementation(project(":core:network-client:network-client-api"))
     implementation(project(":feature:viewers-list:viewers-list-api"))
 
+    implementation(libs.bundles.coil)
+
     implementation(libs.bundles.koin)
 
     implementation(libs.androidx.lifecycle.compose)
