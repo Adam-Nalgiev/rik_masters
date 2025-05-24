@@ -1,6 +1,5 @@
 package ru.rikmasters.circular_chart_impl.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
@@ -11,6 +10,7 @@ import ru.rikmasters.circular_chart_api.domain.GetUsersUseCaseApi
 import ru.rikmasters.circular_chart_api.presentation.CircularChartViewModelApi
 import ru.rikmasters.network_client_api.entity.User
 import ru.rikmasters.network_client_api.entity.UsersResponse
+import kotlin.math.roundToInt
 
 internal class CircularChartViewModel(
     override val getUsersUseCaseApi: GetUsersUseCaseApi
@@ -85,7 +85,6 @@ internal class CircularChartViewModel(
 
     private fun convertToPercent(int: Float, maxValue: Float): Float {
         val percent = (int / maxValue)
-        Log.d("PERCENT", percent.toString())
         return percent.roundToTwoDecimals()
     }
 
@@ -102,6 +101,6 @@ internal class CircularChartViewModel(
     }
 
     private fun Float.roundToTwoDecimals(): Float {
-        return "%.2f".format(this).toFloatOrNull() ?: 0f
+        return (this * 100f).roundToInt() / 100f
     }
 }
