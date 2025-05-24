@@ -53,7 +53,6 @@ object NetworkClient : NetworkClientApi {
         }
     }
 
-
     private const val BASE_URL = "http://test.rikmasters.ru/"
 
     private const val GET_STATISTIC_PATH = "api/statistics/"

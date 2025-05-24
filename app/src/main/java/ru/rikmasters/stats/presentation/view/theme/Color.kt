@@ -1,4 +1,4 @@
-package ru.rikmasters.stats.ui.theme
+package ru.rikmasters.stats.presentation.view.theme
 
 import androidx.compose.ui.graphics.Color
 

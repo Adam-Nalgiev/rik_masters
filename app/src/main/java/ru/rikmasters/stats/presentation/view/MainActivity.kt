@@ -1,4 +1,4 @@
-package ru.rikmasters.stats
+package ru.rikmasters.stats.presentation.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,22 +8,19 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import ru.rikmasters.circular_chart_impl.presentation.view.GenderCircularChart
+import ru.rikmasters.stats.presentation.view.theme.RikstatsTheme
+import ru.rikmasters.viewers_list_impl.presentation.view.ViewersList
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-
-                Box(Modifier.fillMaxSize()) {
-                    GenderCircularChart(
-                        modifier = Modifier.align(Alignment.Center),
-                        200.dp
-                    )
+            RikstatsTheme {
+                Box(Modifier.Companion.fillMaxSize()) {
+                    ViewersList(Modifier.align(Alignment.Center))
                 }
-
+            }
         }
     }
 }
