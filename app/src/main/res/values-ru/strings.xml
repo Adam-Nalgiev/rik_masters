@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Статистика</string>
+    <string name="visitors_more">Количество посетителей в этом месяце выросло</string>
+    <string name="statistic">Статистика</string>
+    <string name="visitors">Посетители</string>
+
+
+    <string name="descr_positive_chart">График растёт</string>
+    <string name="descr_negative_chart">График падает</string>
+</resources>

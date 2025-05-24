@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Rik stats</string>
+
+    <string name="visitors_more">The number of visitors has increased this month</string>
+    <string name="statistic">Statistic</string>
+    <string name="visitors">Visitors</string>
+
+    <string name="descr_positive_chart">The graph is going up</string>
+    <string name="descr_negative_chart">The graph is going down</string>
 </resources>
