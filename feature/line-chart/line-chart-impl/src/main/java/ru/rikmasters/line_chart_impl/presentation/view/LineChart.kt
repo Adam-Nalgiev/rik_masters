@@ -5,6 +5,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -51,7 +52,7 @@ fun ViewsChart(modifier: Modifier = Modifier) {
 }
 
 @Composable
-internal fun ViewsLineChart(
+private fun ViewsLineChart(
     modifier: Modifier = Modifier,
     viewModel: LineChartViewModelImpl = koinViewModel()
 ) {
@@ -72,7 +73,7 @@ internal fun ViewsLineChart(
         }
 
         LineChart(
-            modifier = modifier,
+            modifier = Modifier,
             viewModel = viewModel,
             dataState = state
         )
@@ -80,7 +81,7 @@ internal fun ViewsLineChart(
 }
 
 @Composable
-internal fun LineChart(
+private fun LineChart(
     modifier: Modifier = Modifier,
     viewModel: LineChartViewModelImpl,
     dataState: State<List<Pair<String, Int>>>
@@ -93,7 +94,7 @@ internal fun LineChart(
         Canvas(
             modifier
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(PaddingValues(horizontal = 16.dp, vertical = 24.dp))
                 .pointerInput(data) {
                     detectTapGestures { tap ->
                         // находим ближайший по X индекс
@@ -102,7 +103,7 @@ internal fun LineChart(
                     }
                 }
         ) {
-            val paddingBetweenValuesAndField = 60f
+            val paddingBetweenValuesAndField = 40f
             val coordinatesFieldHeight = size.height - paddingBetweenValuesAndField
             val minFieldMaxValue = 40f
             val xStepSize = size.width / data.size

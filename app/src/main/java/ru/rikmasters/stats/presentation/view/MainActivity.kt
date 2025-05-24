@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RikstatsTheme {
-                Box(Modifier.Companion.fillMaxSize()) {
+                Box(Modifier.fillMaxSize()) {
                     MainScreen(modifier = Modifier)
                 }
             }

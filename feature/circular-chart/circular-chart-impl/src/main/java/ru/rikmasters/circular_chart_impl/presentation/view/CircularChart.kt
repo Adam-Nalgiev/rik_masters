@@ -44,7 +44,7 @@ import ru.rikmasters.circular_chart_impl.presentation.viewmodel.CircularChartVie
 @Composable
 fun GenderCircularChart(
     modifier: Modifier = Modifier,
-    size: Dp = 100.dp
+    size: Dp = 200.dp
 ) {
     CircularChart(
         modifier = modifier,
@@ -63,9 +63,7 @@ private fun CircularChart(
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
-            .padding(16.dp)
-            .background(White, RoundedCornerShape(16.dp))
+        modifier = modifier.background(White, RoundedCornerShape(16.dp))
     ) {
         //Круг
         Circle(

@@ -4,7 +4,7 @@ import ru.rikmasters.circular_chart_api.data.CircularChartRepositoryApi
 import ru.rikmasters.network_client_api.NetworkClientApi
 import ru.rikmasters.network_client_api.entity.UsersResponse
 
-class CircularChartRepository(
+internal class CircularChartRepository(
     override val client: NetworkClientApi
 ) : CircularChartRepositoryApi {
 

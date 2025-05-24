@@ -8,7 +8,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import ru.rikmasters.stats.R
 
-// Set of Material typography styles to start with
 val Typography = Typography(
     headlineLarge = TextStyle(
         fontFamily = FontFamily(Font(R.font.gilroy_bold)),
