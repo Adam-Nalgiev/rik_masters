@@ -23,7 +23,7 @@ class CircularChartViewModel(
             0.5f,
             0.5f
         )
-    ) //первое значени - мужчины, второе - женщины
+    ) //первое значениe - мужчины, второе - женщины
     val totalMaleFemalePercentage = _totalMaleFemalePercentage.asStateFlow()
 
     init {
@@ -71,7 +71,7 @@ class CircularChartViewModel(
         return preparedData.toMap()
     }
 
-    private fun calculateGenderPercentage(data: UsersResponse): Pair<Float, Float> { //первое значени - мужчины, второе - женщины
+    private fun calculateGenderPercentage(data: UsersResponse): Pair<Float, Float> { //первое значениe - мужчины, второе - женщины
         val users = data.users.filter { it.age in 18..Int.MAX_VALUE }
         val totalSize = users.size.toFloat()
         val males = users.filter { it.sex == "M" }.size.toFloat()
