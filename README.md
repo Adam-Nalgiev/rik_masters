@@ -20,16 +20,14 @@ VCS велось по принципам Git Flow (не строгое след�
 Ниже скриншоты экрана эмулятора с открытым приложением на двух локалях:
 RU:
 
-![alt text](https://disk.yandex.ru/i/nhiwBJ8TAVv6MA)
+<picture>
+ <img alt="SCRSHT-1" src="https://disk.yandex.ru/i/nhiwBJ8TAVv6MA">
+</picture>
 
-![alt text](https://disk.yandex.ru/i/z2YLn8Em-eVaQw)
+<picture>
+ <img alt="SCRSHT-1" src="https://disk.yandex.ru/i/z2YLn8Em-eVaQw">
+</picture>
 
-![alt text](https://disk.yandex.ru/i/jTYIBwZppUrclA)
-
-EN:
-
-![alt text](https://disk.yandex.ru/i/GXN0mxZbgEnf9Q)
-
-![alt text](https://disk.yandex.ru/i/s0QKu6o0V1gbvA)
-
-![alt text](https://disk.yandex.ru/i/J0aXmDEsgmf7TA)
+<picture>
+ <img alt="SCRSHT-1" src="https://disk.yandex.ru/i/jTYIBwZppUrclA">
+</picture>
