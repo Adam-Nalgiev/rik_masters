@@ -15,7 +15,7 @@
 
 VCS велось по принципам Git Flow (не строгое следование):
 
-![alt text]([https://disk.yandex.ru/i/5mW0DiDi3clXVA](https://github.com/Adam-Nalgiev/raws/blob/main/Git%20Flow%20Branches.png))
+![alt text](https://github.com/Adam-Nalgiev/raws/blob/main/Git%20Flow%20Branches.png)
 
 Ниже скриншоты экрана эмулятора с открытым приложением на двух локалях:
 RU:
