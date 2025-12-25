@@ -1,6 +1,5 @@
 package ru.rikmasters.circular_chart_impl.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
@@ -11,16 +10,20 @@ import ru.rikmasters.circular_chart_api.domain.GetUsersUseCaseApi
 import ru.rikmasters.circular_chart_api.presentation.CircularChartViewModelApi
 import ru.rikmasters.network_client_api.entity.User
 import ru.rikmasters.network_client_api.entity.UsersResponse
+import kotlin.math.roundToInt
+
+typealias GenderPercentage = Pair<Float, Float>
+typealias AgeCategories = Map<String, GenderPercentage>
 
 internal class CircularChartViewModel(
     override val getUsersUseCaseApi: GetUsersUseCaseApi
 ) : ViewModel(), CircularChartViewModelApi {
 
-    private var _data = MutableStateFlow<Map<String, Pair<Float, Float>>>(emptyMap())
+    private var _data = MutableStateFlow<AgeCategories>(emptyMap())
     val data = _data.asStateFlow()
 
-    private var _totalMaleFemalePercentage = MutableStateFlow<Pair<Float, Float>>(
-        Pair(// Лучше бы, конечно, сделать дата класс с именами полов
+    private var _totalMaleFemalePercentage = MutableStateFlow(
+        GenderPercentage(// Лучше бы, конечно, сделать дата класс с именами полов
             0.5f,
             0.5f
         )
@@ -39,11 +42,11 @@ internal class CircularChartViewModel(
         }
     }
 
-    private fun prepareData(users: UsersResponse): Map<String, Pair<Float, Float>> {
+    private fun prepareData(users: UsersResponse): AgeCategories {
         val usersList =
             users.users.filter { it.age in 18..Int.MAX_VALUE } //откуда-то в приходящих данных 15 - летний - убираем его т.к. нет такой категории
         val totalCount = usersList.size
-        val preparedData = mutableMapOf<String, Pair<Float, Float>>()
+        val preparedData = mutableMapOf<String, GenderPercentage>()
         val ageCategoriesList = listOf(
             "18-21",
             "22-25",
@@ -61,10 +64,10 @@ internal class CircularChartViewModel(
         }
 
         usersInAgeCategories.forEach { ageCategory, usersInCategory ->
-            var males = usersInCategory.filter { it.sex == "M" }.size
-            var females = usersInCategory.filter { it.sex == "W" }.size
+            val males = usersInCategory.filter { it.sex == "M" }.size
+            val females = usersInCategory.filter { it.sex == "W" }.size
             preparedData[ageCategory] =
-                Pair(
+                GenderPercentage(
                     first = convertToPercent(males.toFloat(), totalCount.toFloat()), // мужчин
                     second = convertToPercent(females.toFloat(), totalCount.toFloat()) // женщин
                 )
@@ -72,7 +75,7 @@ internal class CircularChartViewModel(
         return preparedData.toMap()
     }
 
-    private fun calculateGenderPercentage(data: UsersResponse): Pair<Float, Float> { //первое значениe - мужчины, второе - женщины
+    private fun calculateGenderPercentage(data: UsersResponse): GenderPercentage { //первое значениe - мужчины, второе - женщины
         val users = data.users.filter { it.age in 18..Int.MAX_VALUE }
         val totalSize = users.size.toFloat()
         val males = users.filter { it.sex == "M" }.size.toFloat()
@@ -80,12 +83,11 @@ internal class CircularChartViewModel(
         val malesPercent = males / totalSize
         val femalesPercent = females / totalSize
 
-        return Pair(malesPercent, femalesPercent)
+        return GenderPercentage(malesPercent, femalesPercent)
     }
 
     private fun convertToPercent(int: Float, maxValue: Float): Float {
         val percent = (int / maxValue)
-        Log.d("PERCENT", percent.toString())
         return percent.roundToTwoDecimals()
     }
 
@@ -102,6 +104,6 @@ internal class CircularChartViewModel(
     }
 
     private fun Float.roundToTwoDecimals(): Float {
-        return "%.2f".format(this).toFloatOrNull() ?: 0f
+        return (this * 100f).roundToInt() / 100f
     }
 }
