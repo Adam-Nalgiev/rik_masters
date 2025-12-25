@@ -1,6 +1,6 @@
-Может быть доработан по требованию.
-В коде есть ряд комментариев, объясняющих некоторые решения. Проект стоит немного доработать, этап отладки и оптимизации был мною пропущен т.к., к сожалению, нет времени.
+В коде есть ряд комментариев, объясняющих некоторые решения. Проект можно доработать, этап отладки и оптимизации был мною пропущен т.к., к сожалению, нет времени.
 Были применены соедующие технологии и подходы:
+
     - Kotlin
     - Jetpack Compose
     - Coroutines + Flow
@@ -13,23 +13,25 @@
     - SOLID
     - Clean Architecture
 
+Не создавался с целью идеального примера кода. Основная цель - демонстрация возможностей работы с динамически рисующимся UI (графиками)
+
 VCS велось по принципам Git Flow (не строгое следование):
 
-![alt text](https://disk.yandex.ru/i/5mW0DiDi3clXVA)
+![alt text](https://github.com/Adam-Nalgiev/raws/blob/main/Git%20Flow%20Branches.png)
 
 Ниже скриншоты экрана эмулятора с открытым приложением на двух локалях:
 RU:
 
-![alt text](https://disk.yandex.ru/i/nhiwBJ8TAVv6MA)
+![alt text](https://github.com/Adam-Nalgiev/raws/blob/main/ru-scr-1.png)
 
-![alt text](https://disk.yandex.ru/i/z2YLn8Em-eVaQw)
+![alt text](https://github.com/Adam-Nalgiev/raws/blob/main/ru-src-2.png)
 
-![alt text](https://disk.yandex.ru/i/jTYIBwZppUrclA)
+![alt text](https://github.com/Adam-Nalgiev/raws/blob/main/ru-scr-3.png)
 
 EN:
 
-![alt text](https://disk.yandex.ru/i/GXN0mxZbgEnf9Q)
+![alt text](https://github.com/Adam-Nalgiev/raws/blob/main/en-scr-1.png)
 
-![alt text](https://disk.yandex.ru/i/s0QKu6o0V1gbvA)
+![alt text](https://github.com/Adam-Nalgiev/raws/blob/main/en-scr-2.png)
 
-![alt text](https://disk.yandex.ru/i/J0aXmDEsgmf7TA)
+![alt text](https://github.com/Adam-Nalgiev/raws/blob/main/en-scr-3.png)
