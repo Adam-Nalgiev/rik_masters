@@ -124,7 +124,7 @@ private fun LineChart(
                     textLayoutResult = text,
                     topLeft = Offset(
                         x = baseStartPadding + (xStepSize * index),
-                        y = size.height.toFloat()
+                        y = size.height
                     )
                 )
             }
@@ -143,19 +143,19 @@ private fun LineChart(
                 when (i) {
                     0 -> drawContext.canvas.drawLine(
                         Offset(0f, 0f),
-                        Offset(size.width.toFloat(), 0f),
+                        Offset(size.width, 0f),
                         gridPaint
                     )
 
                     1 -> drawContext.canvas.drawLine(
                         Offset(0f, coordinatesFieldHeight / 2),
-                        Offset(size.width.toFloat(), coordinatesFieldHeight / 2),
+                        Offset(size.width, coordinatesFieldHeight / 2),
                         gridPaint
                     )
 
                     2 -> drawContext.canvas.drawLine(
-                        Offset(0f, coordinatesFieldHeight.toFloat()),
-                        Offset(size.width.toFloat(), coordinatesFieldHeight.toFloat()),
+                        Offset(0f, coordinatesFieldHeight),
+                        Offset(size.width, coordinatesFieldHeight),
                         gridPaint
                     )
                 }
