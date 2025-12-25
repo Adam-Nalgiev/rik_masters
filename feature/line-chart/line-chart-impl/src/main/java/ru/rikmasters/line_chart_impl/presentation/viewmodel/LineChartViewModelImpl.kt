@@ -15,11 +15,14 @@ import ru.rikmasters.line_chart_impl.R
 import ru.rikmasters.network_client_api.entity.StatisticsResponse
 import kotlin.math.roundToInt
 
+typealias DailyStatistic = Pair<String, Int>
+typealias VisitorsPerDay = List<DailyStatistic>
+
 internal class LineChartViewModelImpl(
     override val getStatisticUseCase: GetStatisticUseCaseApi
 ) : ViewModel(), LineChartViewModelApi {
 
-    private var _dataFlow = MutableStateFlow<List<Pair<String, Int>>>(emptyList())
+    private var _dataFlow = MutableStateFlow<VisitorsPerDay>(emptyList())
     val dataFlow = _dataFlow.asStateFlow()
 
     init {
@@ -70,10 +73,10 @@ internal class LineChartViewModelImpl(
         return "$day.$monthNum"
     }
 
-    private fun prepareData(data: StatisticsResponse): List<Pair<String, Int>> {
+    private fun prepareData(data: StatisticsResponse): VisitorsPerDay {
         val viewDates = mutableListOf<String>()
 
-        data.statistics.forEach { it.dates.forEach { viewDates.add(it) } }
+        data.statistics.forEach { it.dates.forEach { dates -> viewDates.add(dates) } }
 
         val preparedData = mutableMapOf<String, Int>()
 
