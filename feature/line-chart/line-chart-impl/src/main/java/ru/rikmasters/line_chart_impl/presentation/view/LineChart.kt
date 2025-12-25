@@ -89,16 +89,16 @@ private fun LineChart(
     val context = LocalContext.current
     val textMeasurer = rememberTextMeasurer()
     var selectedPoint by remember { mutableStateOf<Int?>(null) }
-    val data = dataState.value
 
         Canvas(
             modifier
                 .fillMaxSize()
                 .padding(PaddingValues(horizontal = 16.dp, vertical = 24.dp))
-                .pointerInput(data) {
+                .pointerInput(dataState.value) {
                     detectTapGestures { tap ->
                         // находим ближайший по X индекс
-                        val idx = viewModel.nearestPointIndex(tap, data.size, size.toSize())
+                        val idx =
+                            viewModel.nearestPointIndex(tap, dataState.value.size, size.toSize())
                         selectedPoint = idx
                     }
                 }
@@ -106,10 +106,10 @@ private fun LineChart(
             val paddingBetweenValuesAndField = 40f
             val coordinatesFieldHeight = size.height - paddingBetweenValuesAndField
             val minFieldMaxValue = 40f
-            val xStepSize = size.width / data.size
-            val xValues = data.map { viewModel.dateFormatter(it.first) }
+            val xStepSize = size.width / dataState.value.size
+            val xValues = dataState.value.map { viewModel.dateFormatter(it.first) }
                 .map { textMeasurer.measure(it, style = Footnote11Type) }
-            val yValues = data.map { it.second.toFloat() }
+            val yValues = dataState.value.map { it.second.toFloat() }
             val baseStartPadding = 36f
             val yStepSize =
                 if (yValues.maxOrNull() != null && yValues.maxOrNull()!! < minFieldMaxValue) {
@@ -214,7 +214,7 @@ private fun LineChart(
                     style = Typography.bodyMedium.copy(color = Red),
                 )
                 val dateText = textMeasurer.measure(
-                    text = viewModel.dateFormatter(data[id].first, context),
+                    text = viewModel.dateFormatter(dataState.value[id].first, context),
                     style = Footnote13Type
                 )
                 val middleOfRectWidthCoord = rectTopLeft.x + rect.size.width / 2
